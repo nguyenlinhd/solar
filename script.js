@@ -1,13 +1,23 @@
-document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Ngăn chặn hành động submit mặc định
-
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    // Kiểm tra tài khoản và mật khẩu (ví dụ đơn giản, trong thực tế bạn sẽ kiểm tra từ phía server)
-    if (username === 'user' && password === 'pass') {
-        alert('Login successful!');
-    } else {
-        alert('Invalid username or password.');
-    }
+document.addEventListener("DOMContentLoaded", function() {
+    const circle = document.querySelector('.circle');
+    
+    circle.addEventListener('mouseover', function() {
+        this.style.animation = 'rotate 2s linear infinite';
+    });
+    
+    circle.addEventListener('mouseout', function() {
+        this.style.animation = 'float 3s ease-in-out infinite';
+    });
 });
+
+// Keyframes for rotation animation
+const styleSheet = document.styleSheets[0];
+styleSheet.insertRule(`
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}`, styleSheet.cssRules.length);
