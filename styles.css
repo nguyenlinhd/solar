@@ -39,17 +39,15 @@ h1 {
     object-fit: cover;
 }
 
-.moving-image {
-    width: 100px;
-    height: 100px;
-    margin-top: 20px;
+.moving-image { 
+    width: 100px; height: 100px; 
+    margin-top: 20px; 
     animation: move 2s infinite alternate;
-}
-
-.moving-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+} .moving-image img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    background: none;
 }
 .info {
     margin-top: 20px;
