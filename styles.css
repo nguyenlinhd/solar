@@ -42,11 +42,14 @@ h1 {
 .box {
     width: 100px;
     height: 100px;
-    background-color: #007BFF;
     margin-top: 20px;
-    animation: move 2s infinite alternate;
+    animation: move 5s infinite alternate;
 }
-
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 .info {
     margin-top: 20px;
     color: #333;
