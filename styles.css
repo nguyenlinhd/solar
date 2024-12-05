@@ -1,72 +1,76 @@
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
-    background: url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    text-align: center;
+    background: linear-gradient(135deg, #f06, #4a90e2);
+    margin: 0;
+    flex-direction: column;
 }
 
 .container {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    max-width: 80%;
     text-align: center;
+    max-width: 600px;
 }
 
-.content {
+h1 {
+    color: #fff;
+    font-size: 2rem;
     margin-bottom: 20px;
 }
 
-.content h1 {
-    font-size: 2.5em;
-    margin: 0;
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
 }
 
-.content p {
-    font-size: 1.2em;
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: #007BFF;
+    margin-top: 20px;
+    animation: move 2s infinite alternate;
 }
 
-.fb-logo {
-    width: 30px;
-    height: 30px;
+.info {
+    margin-top: 20px;
+    color: #fff;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .content h1 {
-        font-size: 2em;
+.logo:hover {
+    transform: scale(1.1);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
     }
-    .content p {
-        font-size: 1em;
+    50% {
+        transform: translateY(-50px);
     }
-    .fb-logo {
-        width: 25px;
-        height: 25px;
+    100% {
+        transform: translateY(0);
     }
 }
 
-@media (max-width: 480px) {
-    .content h1 {
-        font-size: 1.5em;
+@keyframes move {
+    0% {
+        transform: translateX(0);
     }
-    .content p {
-        font-size: 0.9em;
-    }
-    .fb-logo {
-        width: 20px;
-        height: 20px;
+    100% {
+        transform: translateX(200px);
     }
 }
