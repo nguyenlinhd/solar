@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -14,11 +15,12 @@ header {
 }
 
 .container {
+    width: 90%;
     max-width: 940px;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
 .logo {
@@ -39,9 +41,10 @@ header {
 }
 
 .sidebar, .right-sidebar {
-    width: 240px;
+    width: 100%;
     background-color: #fff;
-    border-right: 1px solid #dbdbdb;
+    border: 1px solid #dbdbdb;
+    margin-bottom: 20px;
     padding: 20px;
 }
 
@@ -52,20 +55,16 @@ header {
     color: #262626;
 }
 
-main {
-    flex: 1;
-    padding: 20px;
-}
-
 .profile {
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
 }
 
 .profile-pic {
     border-radius: 50%;
-    margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .profile-info h2 {
@@ -114,6 +113,11 @@ main {
     background: none;
     cursor: pointer;
     font-size: 1.5rem;
+    color: white; /* Trái tim màu trắng ban đầu */
+}
+
+.like-btn.liked {
+    color: red; /* Trái tim màu đỏ khi được nhấn */
 }
 
 .comments {
