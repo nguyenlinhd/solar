@@ -3,16 +3,17 @@ body {
     background-color: #fafafa;
     margin: 0;
     padding: 0;
+    display: flex;
 }
 
 header {
+    width: 100%;
     background-color: #fff;
     border-bottom: 1px solid #dbdbdb;
     padding: 10px 0;
 }
 
 .container {
-    width: 90%;
     max-width: 940px;
     margin: 0 auto;
     display: flex;
@@ -37,8 +38,23 @@ header {
     color: #262626;
 }
 
+.sidebar, .right-sidebar {
+    width: 240px;
+    background-color: #fff;
+    border-right: 1px solid #dbdbdb;
+    padding: 20px;
+}
+
+.sidebar-item, .suggestion-item button {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #262626;
+}
+
 main {
-    padding: 20px 0;
+    flex: 1;
+    padding: 20px;
 }
 
 .profile {
@@ -109,4 +125,28 @@ main {
 
 .hidden {
     display: none;
+}
+
+.suggestions {
+    margin-bottom: 20px;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.suggestion-info {
+    margin-left: 10px;
+}
+
+.suggestion-info p {
+    margin: 0;
+}
+
+.chat {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
 }
