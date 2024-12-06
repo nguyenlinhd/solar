@@ -1,21 +1,30 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const circle = document.querySelector('.circle');
-    const musicLogo = document.querySelector('.music-logo');
-    const musicPlayer = document.getElementById('music-player');
+document.addEventListener('DOMContentLoaded', function() {
+    const homeButton = document.getElementById('home-btn');
+    const likeButtons = document.querySelectorAll('.like-btn');
+    const commentButtons = document.querySelectorAll('.comment-btn');
+    const shareButtons = document.querySelectorAll('.share-btn');
+    const commentSections = document.querySelectorAll('.comments');
 
-    circle.addEventListener('mouseover', function() {
-        this.style.animation = 'rotate 2s linear infinite';
+    homeButton.addEventListener('click', function(event) {
+        event.preventDefault();  
+        alert('Home button clicked!');
     });
 
-    circle.addEventListener('mouseout', function() {
-        this.style.animation = 'rotate 3s linear infinite';
+    likeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            alert('Liked!');
+        });
     });
 
-    musicLogo.addEventListener('click', function() {
-        if (musicPlayer.classList.contains('hidden')) {
-            musicPlayer.classList.remove('hidden');
-        } else {
-            musicPlayer.classList.add('hidden');
-        }
+    commentButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            commentSections[index].classList.toggle('hidden');
+        });
+    });
+
+    shareButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            alert('Share link copied to clipboard!');
+        });
     });
 });
