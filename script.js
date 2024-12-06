@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     likeButtons.forEach(button => {
         button.addEventListener('click', function() {
-            alert('Liked!');
+            this.classList.toggle('liked');
         });
     });
 
