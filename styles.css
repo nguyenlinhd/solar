@@ -1,96 +1,75 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #fafafa;
     margin: 0;
-    flex-direction: column;
-    background: url('https://i.imgur.com/rtJqcKD.png') no-repeat center center fixed;
-    background-size: cover;
+    padding: 0;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 10px 0;
 }
 
 .container {
-    text-align: center;
-    max-width: 600px;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
+    width: 90%;
+    max-width: 940px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-h1 {
-    color: #333;
+.logo {
     font-size: 2rem;
+    font-weight: bold;
+}
+
+.search-bar {
+    padding: 5px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+}
+
+.menu a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #262626;
+}
+
+main {
+    padding: 20px 0;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-.circle {
-    width: 100px;
-    height: 100px;
+.profile-pic {
     border-radius: 50%;
-    position: relative;
-    animation: rotate 3s linear infinite;
-    overflow: hidden;
+    margin-right: 20px;
 }
 
-.circle img {
+.profile-info h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.profile-info p {
+    margin: 5px 0 0;
+    color: #8e8e8e;
+}
+
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.post img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.moving-image {
-    width: 100px;
-    height: 100px;
-    margin-top: 20px;
-    animation: move 2s infinite alternate;
-}
-
-.moving-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.info {
-    margin-top: 20px;
-    color: #333;
-}
-
-.logo, .music-logo {
-    width: 50px;
-    height: 50px;
-    margin-top: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.logo:hover, .music-logo:hover {
-    transform: scale(1.1);
-}
-
-.hidden {
-    display: none;
-}
-
-#music-player {
-    margin-top: 20px;
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes move {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(200px);
-    }
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
 }
