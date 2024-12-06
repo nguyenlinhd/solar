@@ -68,8 +68,45 @@ main {
     gap: 20px;
 }
 
-.post img {
+.post {
     width: 100%;
     border: 1px solid #dbdbdb;
     border-radius: 3px;
+    overflow: hidden;
+}
+
+.post img {
+    width: 100%;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #dbdbdb;
+}
+
+.post-actions button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.comments {
+    padding: 10px;
+    border-top: 1px solid #dbdbdb;
+    background-color: #fff;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+}
+
+.hidden {
+    display: none;
 }
