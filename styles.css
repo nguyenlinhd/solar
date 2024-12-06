@@ -144,11 +144,11 @@ header {
 .suggestion-item {
     display: flex;
     align-items: center;
-    margin-bottom: 1px;
+    margin-bottom: 10px;
 }
 
 .suggestion-info {
-    margin-left: 1px;
+    margin-left: 10px;
 }
 
 .suggestion-info p {
