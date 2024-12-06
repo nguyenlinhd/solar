@@ -80,7 +80,7 @@ main {
 
 .posts {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
 }
 
@@ -95,12 +95,18 @@ main {
     width: 100%;
 }
 
+.post-caption {
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+}
+
 .post-actions {
     display: flex;
     justify-content: space-around;
     padding: 10px;
     background-color: #fff;
-    border-top: 1px solid #dbdbdb;
 }
 
 .post-actions button {
