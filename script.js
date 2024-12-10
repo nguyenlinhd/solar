@@ -33,12 +33,16 @@ var init = function () {
     ctx.fillRect(0, 0, width, height);
 
     var heartPosition = function (rad) {
-        //return [Math.sin(rad), Math.cos(rad)];
         return [Math.pow(Math.sin(rad), 3), -(15 * Math.cos(rad) - 5 * Math.cos(2 * rad) - 2 * Math.cos(3 * rad) - Math.cos(4 * rad))];
     };
     var scaleAndTranslate = function (pos, sx, sy, dx, dy) {
         return [dx + pos[0] * sx, dy + pos[1] * sy];
     };
+
+    var heartScale = 1;
+    var heartBeatSpeed = 0.03;
+    var heartBeatSize = 0.1;
+    var hue = 350;
 
     window.addEventListener('resize', function () {
         width = canvas.width = koef * innerWidth;
@@ -95,6 +99,29 @@ var init = function () {
         time += ((Math.sin(time)) < 0 ? 9 : (n > 0.8) ? .2 : 1) * config.timeDelta;
         ctx.fillStyle = "rgba(0,0,0,.1)";
         ctx.fillRect(0, 0, width, height);
+
+        heartScale = 1 + Math.sin(Date.now() * heartBeatSpeed) * heartBeatSize;
+
+        var points = [];
+        for (var i = 0; i < pointsOrigin.length; i++) {
+            var point = pointsOrigin[i];
+            var scale = point.scale * heartScale;
+            point.x += point.vx;
+            point.y += point.vy;
+            points[i] = scaleAndTranslate([point.x, point.y], scale, scale, width / 2, height / 2);
+        }
+
+        for (var i = 0; i < points.length; i++) {
+            var point = points[i];
+            var gradient = ctx.createRadialGradient(point[0], point[1], 0, point[0], point[1], 8);
+            gradient.addColorStop(0, 'hsl(' + hue + ', 100%, 60%)');
+            gradient.addColorStop(1, 'hsl(' + (hue + 30) + ', 100%, 50%)');
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(point[0], point[1], 1, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
         for (i = e.length; i--;) {
             var u = e[i];
             var q = targetPoints[u.q];
@@ -133,8 +160,6 @@ var init = function () {
                 ctx.fillRect(u.trace[k].x, u.trace[k].y, 1, 1);
             }
         }
-        //ctx.fillStyle = "rgba(255,255,255,1)";
-        //for (i = u.trace.length; i--;) ctx.fillRect(targetPoints[i][0], targetPoints[i][1], 2, 2);
 
         window.requestAnimationFrame(loop, canvas);
     };
