@@ -50,14 +50,14 @@ var init = function () {
     var pointsOrigin = [];
     var i;
     var dr = mobile ? 0.3 : 0.1;
-    for (i = 0; Math.PI * 2 > i; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 210, 13, 0, 0));
-    for (i = 0; Math.PI * 2 > i; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150, 9, 0, 0));
-    for (i = 0; Math.PI * 2 > i; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90, 5, 0, 0));
+    for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 210, 13, 0, 0));
+    for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150, 9, 0, 0));
+    for (i = 0; i < Math.PI * 2; i += dr) pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90, 5, 0, 0));
     var heartPointsCount = pointsOrigin.length;
 
     var targetPoints = [];
     var pulse = function (kx, ky) {
-        for (i = 0; pointsOrigin.length > i; i++) {
+        for (i = 0; i < pointsOrigin.length; i++) {
             targetPoints[i] = [];
             targetPoints[i][0] = kx * pointsOrigin[i][0] + width / 2;
             targetPoints[i][1] = ky * pointsOrigin[i][1] + height / 2;
@@ -65,7 +65,7 @@ var init = function () {
     };
 
     var e = [];
-    for (i = 0; heartPointsCount > i; i++) {
+    for (i = 0; i < heartPointsCount; i++) {
         var x = rand() * width;
         var y = rand() * height;
         e[i] = {
@@ -79,7 +79,7 @@ var init = function () {
             f: "hsla(0," + ~~(40 * rand() + 60) + "%," + ~~(60 * rand() + 20) + "%,.3)",
             trace: []
         };
-        for (var k = 0; traceCount > k; k++) e[i].trace[k] = {x: x, y: y};
+        for (var k = 0; k < traceCount; k++) e[i].trace[k] = {x: x, y: y};
     }
 
     var config = {
@@ -121,14 +121,14 @@ var init = function () {
             u.trace[0].y += u.vy;
             u.vx *= u.force;
             u.vy *= u.force;
-            for (k = 0; u.trace.length - 1 > k;) {
+            for (k = 0; k < u.trace.length - 1;) {
                 var T = u.trace[k];
                 var N = u.trace[++k];
                 N.x -= config.traceK * (N.x - T.x);
                 N.y -= config.traceK * (N.y - T.y);
             }
             ctx.fillStyle = u.f;
-            for (k = 0; u.trace.length > k; k++) {
+            for (k = 0; k < u.trace.length; k++) {
                 ctx.fillRect(u.trace[k].x, u.trace[k].y, 1, 1);
             }
         }
@@ -138,5 +138,5 @@ var init = function () {
 };
 
 var s = document.readyState;
-if ('complete' === s || 'loaded' === s || 'interactive' === s) init();
+if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
 else document.addEventListener('DOMContentLoaded', init, false);
