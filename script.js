@@ -102,12 +102,12 @@ var init = function () {
 
         heartScale = 1 + Math.sin(Date.now() * heartBeatSpeed) * heartBeatSize;
 
-        var points = [];
-        for (var i = 0; i < pointsOrigin.length; i++) {
-            var point = pointsOrigin[i];
+        for (i = 0; i < pointsOrigin.length; i++) {
+            var point = {};
+            point.x = pointsOrigin[i][0];
+            point.y = pointsOrigin[i][1];
+            point.scale = 1;
             var scale = point.scale * heartScale;
-            point.x += point.vx;
-            point.y += point.vy;
             points[i] = scaleAndTranslate([point.x, point.y], scale, scale, width / 2, height / 2);
         }
 
