@@ -29,7 +29,7 @@ var init = function () {
     var width = canvas.width = koef * innerWidth;
     var height = canvas.height = koef * innerHeight;
     var rand = Math.random;
-    ctx.fillStyle = "rgba(0,0,0,1)";
+    ctx.fillStyle = "rgba(0,0,0,0)";
     ctx.fillRect(0, 0, width, height);
 
     var heartPosition = function (rad) {
@@ -47,7 +47,7 @@ var init = function () {
     window.addEventListener('resize', function () {
         width = canvas.width = koef * innerWidth;
         height = canvas.height = koef * innerHeight;
-        ctx.fillStyle = "rgba(0,0,0,1)";
+        ctx.fillStyle = "rgba(0,0,0,0)";
         ctx.fillRect(0, 0, width, height);
     });
 
@@ -97,7 +97,7 @@ var init = function () {
         var n = -Math.cos(time);
         pulse((1 + n) * .5, (1 + n) * .5);
         time += ((Math.sin(time)) < 0 ? 9 : (n > 0.8) ? .2 : 1) * config.timeDelta;
-        ctx.fillStyle = "rgba(0,0,0,.1)";
+        ctx.fillStyle = "rgba(0,0,0,0.1)";
         ctx.fillRect(0, 0, width, height);
 
         heartScale = 1 + Math.sin(Date.now() * heartBeatSpeed) * heartBeatSize;
