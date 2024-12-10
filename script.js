@@ -40,7 +40,7 @@ var init = function () {
     };
 
     var heartScale = 1;
-    var heartBeatSpeed = 0.03;
+    var heartBeatSpeed = 0.08;  
     var heartBeatSize = 0.1;
     var hue = 350;
 
