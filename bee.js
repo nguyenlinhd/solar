@@ -1,23 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Tạo container cho ong
-    const beeContainer = document.createElement('div');
-    beeContainer.className = 'bee-container';
-    document.body.appendChild(beeContainer);
+    // Đợi 4 giây cho hoa nở hoàn toàn
+    setTimeout(() => {
+        // Tạo container cho ong
+        const beeContainer = document.createElement('div');
+        beeContainer.className = 'bee-container';
+        document.body.appendChild(beeContainer);
 
-    // Tạo 3 con ong với thời gian bay khác nhau
-    const beeCount = 3;
-    for (let i = 0; i < beeCount; i++) {
-        const bee = document.createElement('div');
-        bee.className = 'bee';
-        bee.style.setProperty('--duration', `${15 + i * 5}s`);
-        bee.style.setProperty('--delay', `${-i * 5}s`);
-        beeContainer.appendChild(bee);
+        // Tạo 3 con ong với thời gian bay khác nhau
+        const beeCount = 3;
+        for (let i = 0; i < beeCount; i++) {
+            const bee = document.createElement('div');
+            bee.className = 'bee';
+            bee.style.setProperty('--duration', `${20 + i * 5}s`);
+            bee.style.setProperty('--delay', `${i * 2}s`);
+            bee.style.opacity = '0';
+            beeContainer.appendChild(bee);
 
-        // Thiết lập chu kỳ đậu hoa
-        setInterval(() => {
-            landOnFlower(bee);
-        }, 20000); // Mỗi 20 giây sẽ đậu một lần
-    }
+            // Hiệu ứng xuất hiện từ từ
+            setTimeout(() => {
+                bee.style.transition = 'opacity 1s';
+                bee.style.opacity = '1';
+            }, i * 1000);
+
+            // Thiết lập chu kỳ đậu hoa
+            setTimeout(() => {
+                setInterval(() => {
+                    landOnFlower(bee);
+                }, 15000 + i * 2000); // Mỗi con ong có chu kỳ đậu khác nhau
+            }, 5000 + i * 2000);
+        }
+    }, 4000); // Đợi 4 giây cho hoa nở
 
     function landOnFlower(bee) {
         const flowers = document.querySelectorAll('.flower');
