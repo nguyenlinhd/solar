@@ -12,14 +12,33 @@
   <body>
     
     <!-- Visit my tiktok("Meowish") for more code -->
-
     <div class="container">
-      <form>
+      <form id="loginForm" onsubmit="return validateForm(event)">
         <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Username here..." />
+        <input 
+          type="text" 
+          id="username" 
+          name="username"
+          placeholder="Username here..." 
+          aria-label="Enter your username"
+          required
+          minlength="3"
+          maxlength="50"
+        />
         <label for="password">Password:</label>
-        <input type="password" id="password"  placeholder="Password here..." />
-        <button>Login</button>
+        <input 
+          type="password" 
+          id="password"
+          name="password"
+          placeholder="Password here..." 
+          aria-label="Enter your password"
+          required
+          minlength="8"
+          maxlength="128"
+          autocomplete="new-password"
+        />
+        <div id="error-message" class="error-message" aria-live="polite"></div>
+        <button type="submit">Login</button>
       </form>
       <div class="ear-l"></div>
       <div class="ear-r"></div>
