@@ -1,89 +1,86 @@
 export function animation(){
-  // about me entry animation
-  const aboutMe = document.querySelector('.about-self ');
-  const aboutMeObserver = new IntersectionObserver(entry => {
-    const aboutMe = entry[0].target;
-    if(entry[0].isIntersecting){
-      aboutMe.style.animation = 'about-me 1s ease forwards'
-    }
-  },
-   {
-    rootMargin: '-100px'
-  });
-
-  aboutMeObserver.observe(aboutMe);
-
-
-  // about profile pic entry animation
-  const aboutProfilePic = document.querySelector('#about-section .profile-pic');
-  const aboutProfileObserver = new IntersectionObserver(entry => {
-    const aboutProfilePic = entry[0].target;
-    if(entry[0].isIntersecting){
-      aboutProfilePic.style.animation = 'about-profile-slide 1s ease forwards'
-    }
-  },
-  {
-    rootMargin: '-100px'
-  });
- 
-  aboutProfileObserver.observe(aboutProfilePic);
-
-
-  // skills entry animation
-  const skills = document.querySelectorAll('.skills-container .skill');
-  const skillsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const skill = entry.target;
-      if(entry.isIntersecting){
-        skill.style.animation = 'cards-entry 1s ease forwards';
-      }
-    })
-  },
-  {
-    rootMargin: '-70px'
+  // Home section animations
+  const profileDetail = document.querySelector('.profile-detail');
+  if (profileDetail) {
+    profileDetail.style.animation = 'slide-in-left 1s ease forwards';
   }
-  );
 
-  skills.forEach(skill => {
-    skillsObserver.observe(skill)
-  });
+  const profilePic = document.querySelector('.profile-pic');
+  if (profilePic) {
+    profilePic.style.animation = 'slide-in-right 1s ease forwards';
+  }
 
-
-  // My offered Service animation
-  const services = document.querySelectorAll('#services-section .card');
-
-  const servicesObserver = new IntersectionObserver(entries => {
+  // About section animations
+  const aboutContent = document.querySelector('.about-content');
+  const aboutObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      const service = entry.target;
-      if(entry.isIntersecting){
-        service.style.animation = 'cards-entry 1s ease forwards';
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fade-in 1s ease forwards';
       }
-    })
+    });
+  }, {
+    threshold: 0.3
   });
 
-  services.forEach(service => {
-    servicesObserver.observe(service)
+  if (aboutContent) {
+    aboutObserver.observe(aboutContent);
+  }
+
+  // Skills animations
+  const skillCards = document.querySelectorAll('.skill-card');
+  const skillsObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'slide-up 0.5s ease forwards';
+        entry.target.style.opacity = 1;
+      }
+    });
+  }, {
+    threshold: 0.2
   });
 
+  skillCards.forEach(card => {
+    card.style.opacity = 0;
+    skillsObserver.observe(card);
+  });
 
-    // contact input entry animation
-    const contactInputs = document.querySelectorAll('#contact-section .input');
-    const inputObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const input = entry.target;
-        if(entry.isIntersecting){
-          input.style.animation = 'contact-input-entry 1s ease forwards'
-        }
-      })
-    },
-    {
-      rootMargin: '-100px'
-    }
-  );
-    
-  contactInputs.forEach(input => {
-    inputObserver.observe(input)
-  })
+  // Projects animations
+  const projectCards = document.querySelectorAll('.project-card');
+  const projectsObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'scale-in 0.5s ease forwards';
+        entry.target.style.opacity = 1;
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
 
+  projectCards.forEach(card => {
+    card.style.opacity = 0;
+    projectsObserver.observe(card);
+  });
+
+  // Contact form animations
+  const contactForm = document.querySelector('.contact-form');
+  const contactObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'slide-in-bottom 1s ease forwards';
+      }
+    });
+  }, {
+    threshold: 0.3
+  });
+
+  if (contactForm) {
+    contactObserver.observe(contactForm);
+  }
+
+  // Glowing dots animation
+  const glowingDots = document.querySelectorAll('.glowing');
+  glowingDots.forEach(dot => {
+    dot.style.animation = 'colorChange 5s linear infinite';
+  });
 }
-
