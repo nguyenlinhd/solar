@@ -123,62 +123,63 @@ document.addEventListener("click", (e) => {
 
 // Form validation
 function validateForm(event) {
+  // Ngăn chặn form submit và reload trang
   event.preventDefault();
-  errorMessage.textContent = "";
-
-  const username = usernameRef.value.trim();
-  const password = passwordRef.value;
-
-  // Basic validation
+  
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  const errorMessage = document.getElementById("error-message");
+  
+  // Kiểm tra điều kiện
   if (username.length < 3) {
-    errorMessage.textContent = "Username must be at least 3 characters long";
+    errorMessage.textContent = "Tên đăng nhập phải có ít nhất 3 ký tự";
     return false;
   }
-
+  
   if (password.length < 8) {
-    errorMessage.textContent = "Password must be at least 8 characters long";
+    errorMessage.textContent = "Mật khẩu phải có ít nhất 8 ký tự";
     return false;
   }
-
-  // Password strength validation
-  const hasUpperCase = /[A-Z]/.test(password);
-  const hasLowerCase = /[a-z]/.test(password);
-  const hasNumbers = /\d/.test(password);
-  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-
-  if (!(hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChar)) {
-    errorMessage.textContent = "Password must contain uppercase, lowercase, numbers and special characters";
-    return false;
-  }
-
-  // Nếu validation thành công, gọi hàm xử lý đăng nhập
-  handleLogin(username, password);
+  
+  // Nếu thông tin hợp lệ, mở trang web trong tab mới
+  window.location.href = "https://nguyenlinhd.github.io/git_06/";
   return false;
 }
 
-// Hàm xử lý đăng nhập
-function handleLogin(username, password) {
-  // Tạm thởi hardcode thông tin đăng nhập để test
-  // Bạn có thể thay đổi thông tin này sau
-  const validUsername = "admin";
-  const validPassword = "Admin@123";
-
-  if (username === validUsername && password === validPassword) {
-    // Đăng nhập thành công
-    errorMessage.textContent = "Login successful! Redirecting...";
-    errorMessage.style.color = "#2ecc71"; // Màu xanh cho thông báo thành công
-    
-    // Đợi 1 giây trước khi chuyển trang
-    setTimeout(() => {
-      // Chuyển đến trang page.html với đường dẫn tương đối
-      window.location.href = "./page.html";
-    }, 1000);
-  } else {
-    // Đăng nhập thất bại
-    errorMessage.textContent = "Invalid username or password";
-    errorMessage.style.color = "#ff3333";
-  }
-}
+// Panda eye tracking animation
+document.addEventListener("mousemove", (e) => {
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+  
+  const eyeL = document.querySelector(".eyeball-l");
+  const eyeR = document.querySelector(".eyeball-r");
+  const container = document.querySelector(".container");
+  const containerRect = container.getBoundingClientRect();
+  
+  // Tính toán vị trí chuột
+  const relmouseX = mouseX - containerRect.left;
+  const relmouseY = mouseY - containerRect.top;
+  
+  // Tính góc giữa chuột và mắt
+  const angleL = Math.atan2(
+    relmouseY - eyeL.getBoundingClientRect().top + containerRect.top,
+    relmouseX - eyeL.getBoundingClientRect().left + containerRect.left
+  );
+  
+  const angleR = Math.atan2(
+    relmouseY - eyeR.getBoundingClientRect().top + containerRect.top,
+    relmouseX - eyeR.getBoundingClientRect().left + containerRect.left
+  );
+  
+  // Di chuyển mắt
+  const maxMove = 2;
+  eyeL.style.transform = `translate(${Math.cos(angleL) * maxMove}px, ${
+    Math.sin(angleL) * maxMove
+  }px)`;
+  eyeR.style.transform = `translate(${Math.cos(angleR) * maxMove}px, ${
+    Math.sin(angleR) * maxMove
+  }px)`;
+});
 
 // Clear error message when user starts typing
 usernameRef.addEventListener("input", () => {
