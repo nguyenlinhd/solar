@@ -1,6 +1,6 @@
 import { RenderContent } from "./renderContent.js";
-import { header } from "./navigation/top-nav.js";
-import { sideNavFunctionality } from "./navigation/side-nav.js";
+import { header } from "./top-nav.js";
+import { sideNavFunctionality } from "./side-nav.js";
 import { homeSectionFunctionality } from "./home.js";
 import { projectsSectionFunctionality } from "./project.js";
 import { animation } from "./animation.js";
@@ -57,7 +57,7 @@ const glowingDotsHTML = `
         
         <span style="--i:3;"></span>
         
-      </div>
+      </div> 
       <div class="glowing">
         
         <span style="--i:1;"></span>
@@ -66,8 +66,7 @@ const glowingDotsHTML = `
         
         <span style="--i:3;"></span>
         
-      </div>
-`;
+      </div>`;
 
-const glowingDotsContaniner = document.querySelector('.glowing-dots-container').innerHTML = glowingDotsHTML;
-
+const glowingDotsContainer = document.querySelector('.glowing-dots-container');
+glowingDotsContainer.innerHTML = glowingDotsHTML;

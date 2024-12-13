@@ -1,6 +1,4 @@
 export function RenderContent(){
-
-
   // ----------------RENDERING HOME SECTION-------------------//
   const homeDetails = {
     greetTxt: `Hello visitor, I'm`,
@@ -24,22 +22,22 @@ export function RenderContent(){
           class="social-media"
           target="_blank"
           href="${homeDetails.fbLink}">
-          <img src="images and icons/icons/facebook (2).png" alt="fb icon" />
+          <img src="./images and icons/icons/facebook (2).png" alt="fb icon" />
         </a>
         <a
           class="social-media"
           target="_blank"
           href="${homeDetails.tiktokLink}">
-          <img src="images and icons/icons/tik-tok.png" alt="tiktok icon" />
+          <img src="./images and icons/icons/tik-tok.png" alt="tiktok icon" />
         </a>
         <a
           class="social-media"
           target="_blank"
           href="${homeDetails.ytLink}">
-          <img src="images and icons/icons/youtube.png" alt="YT icon" />
+          <img src="./images and icons/icons/youtube.png" alt="YT icon" />
         </a>
         <a class="social-media" target="_blank" href="${homeDetails.instagramLink}">
-          <img src="images and icons/icons/instagram (1).png" alt="insta icon" />
+          <img src="./images and icons/icons/instagram (1).png" alt="insta icon" />
         </a>
       </div>
     </div>
@@ -48,107 +46,138 @@ export function RenderContent(){
       <div id="first-layer">
         <img
           id="profile-img"
-          src="images and icons/images/${homeDetails.profilePhoto}"
-          alt="profile img" />
+          src="./images and icons/images/${homeDetails.profilePhoto}"
+          alt="profile photo"
+        />
       </div>
     </div>
   `;
-  
-  const homeSection = document.querySelector('#home-section').innerHTML = homeHTML;
-    
 
+  document.querySelector('.home-section').innerHTML = homeHTML;
 
+  // ----------------RENDERING ABOUT SECTION-------------------//
+  const aboutDetails = {
+    title: 'About Me',
+    description: `I am a passionate web developer with a strong foundation in front-end development. I specialize in creating responsive and user-friendly websites that provide seamless experiences across all devices.`,
+    aboutPhoto: 'about-photo.jpg'
+  }
 
-
-   // ----------------RENDERING ABOUT SECTION-------------------//
-   const aboutDetails = {
-    myPhoto: 'profile.jpg',
-    aboutMeFirstPrgrph: `Hi! I'm Meowish, a TikToker and programmer who loves sharing creative and inspiring work. I create content featuring my cute programming outputs, turning complex code into visually appealing and fun projects that resonate with my audience.`,
-    aboutMeSecondPrgrph: `Beyond TikTok, I also design code-based wallpapers and build unique portfolio websites that showcase my technical skills and artistic touch. Through my work, I aim to merge creativity and functionality, inspiring others to see the beauty in programming.`
-   }
-
-   const aboutHTML = `
-    <h2 class="section-name about">ABOUT ME <span class="line"></span></h2>
-    <div class="container">
-      <div>
-        <img
-          class="profile-pic"
-          src="images and icons/images/${aboutDetails.myPhoto}"
-          alt="profile img" />
+  const aboutHTML = `
+    <div class="about-title">
+      <h2>${aboutDetails.title}</h2>
+    </div>
+    <div class="about-content">
+      <div class="about-photo">
+        <img src="./images and icons/images/${aboutDetails.aboutPhoto}" alt="about photo">
       </div>
-      <div class="about-self scroll-reveal">
-        <p class="first-paragraph">
-          <span>${aboutDetails.aboutMeFirstPrgrph}</span>
-        </p>
-        <br />
-        <p class="second-paragraph">
-          <span>${aboutDetails.aboutMeSecondPrgrph}</span>
-        </p>
+      <div class="about-description">
+        <p>${aboutDetails.description}</p>
       </div>
     </div>
-   `
+  `;
 
-  const aboutSection = document.querySelector('#about-section').innerHTML = aboutHTML;
+  document.querySelector('.about-section').innerHTML = aboutHTML;
 
+  // ----------------RENDERING SKILLS SECTION-------------------//
+  const skillsDetails = {
+    title: 'My Skills',
+    skills: [
+      {
+        name: 'HTML',
+        icon: 'html.png',
+        description: 'Proficient in HTML5 and semantic markup'
+      },
+      {
+        name: 'CSS',
+        icon: 'css.png',
+        description: 'Strong understanding of CSS3, including Flexbox and Grid'
+      },
+      {
+        name: 'JavaScript',
+        icon: 'js.png',
+        description: 'Experience with modern JavaScript (ES6+) and DOM manipulation'
+      }
+    ]
+  }
 
+  const skillsHTML = `
+    <div class="skills-title">
+      <h2>${skillsDetails.title}</h2>
+    </div>
+    <div class="skills-content">
+      ${skillsDetails.skills.map(skill => `
+        <div class="skill-card">
+          <img src="./images and icons/icons/${skill.icon}" alt="${skill.name} icon">
+          <h3>${skill.name}</h3>
+          <p>${skill.description}</p>
+        </div>
+      `).join('')}
+    </div>
+  `;
 
+  document.querySelector('.my-skills-section').innerHTML = skillsHTML;
 
-    // ----------------RENDERING SKILLS SECTION-------------------//
+  // ----------------RENDERING PROJECTS SECTION-------------------//
+  const projectsDetails = {
+    title: 'My Projects',
+    projects: [
+      {
+        name: 'Portfolio Website',
+        image: 'project1.jpg',
+        description: 'A responsive portfolio website built with HTML, CSS, and JavaScript',
+        link: '#'
+      },
+      {
+        name: 'Task Manager',
+        image: 'project2.jpg',
+        description: 'A simple task management application with local storage',
+        link: '#'
+      }
+    ]
+  }
 
-    const skills = [
-      { iconName: "guitarist.png", skillName: "Guitarist" },
-      { iconName: "music.png", skillName: "Music Writer" },
-      { iconName: "music transcription.png", skillName: "Music Transcription" },
-      { iconName: "html.png", skillName: "HTML" },
-      { iconName: "CSS.png", skillName: "CSS" },
-      { iconName: "java-script.png", skillName: "JavaScript" },
-      { iconName: "Git.png", skillName: "Git" },
-      { iconName: "github (2).png", skillName: "GitHub" },
-      { iconName: "visual-studio.png", skillName: "VScode" },
-    ];
+  const projectsHTML = `
+    <div class="projects-title">
+      <h2>${projectsDetails.title}</h2>
+    </div>
+    <div class="projects-content">
+      ${projectsDetails.projects.map(project => `
+        <div class="project-card">
+          <img src="./images and icons/images/${project.image}" alt="${project.name} screenshot">
+          <h3>${project.name}</h3>
+          <p>${project.description}</p>
+          <a href="${project.link}" target="_blank" class="view-project">View Project</a>
+        </div>
+      `).join('')}
+    </div>
+  `;
 
-    const skillHTML = `
-        <h2 class="section-name"><span class="line"></span> SKILLS</h2>
-          
-          <div class="skills-container d-flex">
-          </div>
-    `
-
-  const skillSection = document.querySelector('#skills-section').innerHTML = skillHTML;
-  
-  let skillCard = ''
-  skills.forEach(skill => {
-   skillCard += `<div class="skill">
-    <img src="images and icons/icons/${skill.iconName}" alt="" class="skill-icon">
-    <p class="skill-name">${skill.skillName}</p>
-  </div>`
-  });
-  const skillsContainer = document.querySelector('.skills-container').innerHTML = skillCard;
-
-
-
+  document.querySelector('.projects-section').innerHTML = projectsHTML;
 
   // ----------------RENDERING CONTACT SECTION-------------------//
   const contactDetails = {
-    heading: ' CONNECT WITH ME',
-    subheading: 'Let’s Make Something Cool Together',
+    title: 'Contact Me',
+    email: 'example@email.com',
+    phone: '+1234567890'
   }
-  const contactHTML = `
-    <h2 class="section-name">${contactDetails.heading}</h2>
-    <p class="subheading">${contactDetails.subheading}</p>
-    <form class="f-flex">
-      <div class="input-container">
-        <input class="input name" type="text" placeholder="Name" required />
-        <input class="input email" type="email" placeholder="Email" required/>
-      </div>
 
-      <div class="txt-area-btn-container">
-        <textarea name="Message-me" class="input" placeholder="Enter your Messsage"></textarea> 
-        <button id="submit-btn">Submit</button>
+  const contactHTML = `
+    <div class="contact-title">
+      <h2>${contactDetails.title}</h2>
+    </div>
+    <div class="contact-content">
+      <div class="contact-info">
+        <p>Email: ${contactDetails.email}</p>
+        <p>Phone: ${contactDetails.phone}</p>
       </div>
-    
-    </form>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   `;
 
-  const contactSection = document.querySelector('#contact-section').innerHTML = contactHTML;
+  document.querySelector('.contact-section').innerHTML = contactHTML;
 }
