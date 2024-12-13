@@ -170,8 +170,8 @@ function handleLogin(username, password) {
     
     // Đợi 1 giây trước khi chuyển trang
     setTimeout(() => {
-      // Bạn có thể thay đổi URL này sau khi có trang mới
-      window.location.href = "new_page.html";
+      // Chuyển đến trang page.html
+      window.location.href = "page.html";
     }, 1000);
   } else {
     // Đăng nhập thất bại
